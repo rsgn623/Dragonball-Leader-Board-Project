@@ -25,7 +25,7 @@ def addPlayerEntries():
     if y == lastCount:
         pass       
     elif lastCount != y:
-        for x in range(1, y):
+        for x in range(1, lastCount+1):
             app.removeEntry("Player %d" % x)
         for x in range(1, (lastCount*3)+1):
             app.removeOptionBox("Character %d" % x)
