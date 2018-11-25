@@ -43,13 +43,20 @@ def addPlayerEntries():
 
 
 app.setOptionBoxChangeFunction("Number of Players", addPlayerEntries)
-#app.addButton("Create Image", createImage)
-#def getOptionBoxes(self)
-        #for x in app.getOptionBox("Number of Players") *3):
-            #app.getOptionBox("Character %d" x)
-                
-app.go()
+def imageInstance():
+    leaderBoardImage = createImage(leaderBoardImage)
+    
+app.addButton("Create Image", imageInstance)
 
+app.go()
+class createImage:
+    import numpy as np
+    import cv2
+    def __init__(self):
+        img = cv2.imread('emptyblueice.png',0)
+        cv2.imshow("image", img)
+
+    
 
     
     
