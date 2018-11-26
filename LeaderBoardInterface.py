@@ -46,14 +46,35 @@ def addPlayerEntries():
 
 app.setOptionBoxChangeFunction("Number of Players", addPlayerEntries)
 
-def createImage():
-    img = cv2.imread('empty white.png', cv2.IMREAD_COLOR)
-    img21 = cv2.imread('21nobg.jpg', cv2.IMREAD_COLOR)
+#function overlays transparent image on background
+def transparentOverlay(src , overlay , pos=(0,0),scale = 1):
+    """
+    :param src: Input Color Background Image
+    :param overlay: transparent Image (BGRA)
+    :param pos:  position where the image to be blit.
+    :param scale : scale factor of transparent image.
+    :return: Resultant Image
+    """
+    overlay = cv2.resize(overlay,(0,0),fx=scale,fy=scale)
+    h,w,_ = overlay.shape  # Size of pngImg
+    rows,cols,_ = src.shape  # Size of background Image
+    y,x = pos[0],pos[1]    # Position of PngImage
     
-
-    x_offset=y_offset=50
-    img[y_offset:y_offset+img21.shape[0], x_offset:x_offset+img21.shape[1]] = img21
-    cv2.imshow("image", img)  
+    #loop over all pixels and apply the blending equation
+    for i in range(h):
+        for j in range(w):
+            if x+i >= rows or y+j >= cols:
+                continue
+            alpha = float(overlay[i][j][3]/255.0) # read the alpha channel 
+            src[x+i][y+j] = alpha*overlay[i][j][:3]+(1-alpha)*src[x+i][y+j]
+    return src
+def createImage():
+    #read background 
+    backgroundImg = cv2.imread('empty blue ice.png', cv2.IMREAD_COLOR)
+    img21 = cv2.imread('char images/18.png', cv2.IMREAD_UNCHANGED)
+    result = transparentOverlay(backgroundImg,img21,(300,0),0.7)
+    
+    cv2.imshow("image", result)  
     
 app.addButton("Create Image", createImage)
 
