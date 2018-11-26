@@ -47,10 +47,12 @@ def addPlayerEntries():
 app.setOptionBoxChangeFunction("Number of Players", addPlayerEntries)
 
 def createImage():
-    img = cv2.imread('empty blue ice.png', cv2.IMREAD_COLOR)
-    img21 = cv2.imread('char images/21 no bg.png', cv2.IMREAD_COLOR)
-    #x_offset=y_offset=50
-    #img[y_offset:y_offset+img21.shape[0], x_offset:x_offset+img21.shape[1]] = img21
+    img = cv2.imread('empty white.png', cv2.IMREAD_COLOR)
+    img21 = cv2.imread('21nobg.jpg', cv2.IMREAD_COLOR)
+    
+
+    x_offset=y_offset=50
+    img[y_offset:y_offset+img21.shape[0], x_offset:x_offset+img21.shape[1]] = img21
     cv2.imshow("image", img)  
     
 app.addButton("Create Image", createImage)
