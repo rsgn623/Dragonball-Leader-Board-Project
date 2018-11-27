@@ -1,6 +1,8 @@
 from appJar import gui
 import numpy as np
 import cv2
+from PIL import ImageFont, ImageDraw, Image  
+
 app = gui("Dragonball Fighterz Leaderd Board Creator")
 
 app.addLabelEntry("Left Side Text")
@@ -72,9 +74,35 @@ def createImage():
     #read background 
     backgroundImg = cv2.imread('empty blue ice.png', cv2.IMREAD_COLOR)
     img21 = cv2.imread('char images/18.png', cv2.IMREAD_UNCHANGED)
-    result = transparentOverlay(backgroundImg,img21,(300,0),0.7)
-    
+    #imagedraw using custom font
+    cv2_im_rgb = cv2.cvtColor(backgroundImg,cv2.COLOR_BGR2RGB) 
+    pil_im = Image.fromarray(cv2_im_rgb)  
+    draw = ImageDraw.Draw(pil_im)  
+    font = ImageFont.truetype("Arial.ttf", 25)
+    playerNumber = int(app.getOptionBox("Number of Players"))
+    #if playerNumber 
+    for x in range(1, playerNumber+1):
+        nameCoord = (100 + (x*100),200) 
+        draw.text(nameCoord, app.getEntry("Player %d" % x), font=font, fill="black")
+
+
+    cv2_im_processed = cv2.cvtColor(np.array(pil_im), cv2.COLOR_RGB2BGR) 
+    result = transparentOverlay(cv2_im_processed,img21,(300,0),0.7)
+    """
+    def getPlayerValues():
+        playerValues = {}
+        for x in range(1,4):
+            #makes list of player name and characters they play
+            playerValues["Player %d Name" % x] = app.getEntry("Player %d" % x)
+            playerValues["Character %d" % x] = app.getOptionBox("Character %d" %x)
+            playerValues["Character %d" % (x + 1)] = app.getOptionBox("Character %d" % (x + 1))
+            playerValues["Character %d" % (x + 2)] = app.getOptionBox("Character %d" % (x + 2)) 
+    app.getPlayerValues()
+    """
     cv2.imshow("image", result)  
+    
+
+    
     
 app.addButton("Create Image", createImage)
 
