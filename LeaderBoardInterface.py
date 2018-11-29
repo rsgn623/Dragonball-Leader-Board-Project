@@ -107,13 +107,13 @@ def createImage():
             draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=font, fill="black")
     if playerNumber == 7:
         for x in range(1, 4):
-            nameCoord = (82 + ((-1+x)*600),171) 
+            nameCoord = (82 + ((-1+x)*550),141) 
             draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmaller, fill="black")
         for x in range(4, 7):
-            nameCoord = (82 + ((-4+x)*600),451) 
+            nameCoord = (82 + ((-4+x)*550),401) 
             draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmaller, fill="black")
         for x in range(7, 8):
-            nameCoord = (682,661) 
+            nameCoord = (632,631) 
             draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmaller, fill="black")
     if playerNumber == 8:    
         for x in range(1, 5):
@@ -295,6 +295,49 @@ def createImage():
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
             charResize = cv2.resize(charImg, (0,0), fx=0.7, fy=0.7) 
             result = transparentOverlay(cv2_im_processed,charResize,(1182 + ((-16+x) * 150),600),0.7)
+    if playerNumber == 7:
+        for x in range(1, 4):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry)
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.5, fy=0.5)    
+            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-1+x) *150),180),0.7)
+        for x in range(4, 7):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry)                
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.5, fy=0.5) 
+            result = transparentOverlay(cv2_im_processed,charResize,(632 + ((-4+x) * 150),180),0.7)
+        for x in range(7, 10):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            getCharacterFromEntry(characterEntry) 
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.5, fy=0.5) 
+            result = transparentOverlay(cv2_im_processed,charResize,(1182 + ((-7+x) * 150),180),0.7)
+        for x in range(10, 13):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry) 
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.5, fy=0.5) 
+            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-10+x) * 150),431),0.7)
+        for x in range(13, 16):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry) 
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.5, fy=0.5) 
+            result = transparentOverlay(cv2_im_processed,charResize,(632 + ((-13+x) * 150),431),0.7)
+        for x in range(16, 19):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry) 
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.5, fy=0.5) 
+            result = transparentOverlay(cv2_im_processed,charResize,(1182 + ((-16+x) * 150),431),0.7)
+        for x in range(19, 22):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry) 
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.5, fy=0.5) 
+            result = transparentOverlay(cv2_im_processed,charResize,(632 + ((-19+x) * 150),660),0.7)
     #result = transparentOverlay(cv2_im_processed,smaller18,(300,0),0.7)
     cv2.imshow("image", result)  
     
