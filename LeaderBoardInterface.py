@@ -79,6 +79,7 @@ def createImage():
     pil_im = Image.fromarray(cv2_im_rgb)  
     draw = ImageDraw.Draw(pil_im)  
     font = ImageFont.truetype("Arial.ttf", 25)
+    fontSmaller = ImageFont.truetype("Arial.ttf", 20)
     playerNumber = int(app.getOptionBox("Number of Players"))
     if playerNumber == 4:
         for x in range(1, 4):
@@ -92,10 +93,25 @@ def createImage():
             nameCoord = (82 + ((-1+x)*600),171) 
             draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=font, fill="black")
         for x in range(4, 6):
-            nameCoord = (82 + ((-1+x)*600),451) 
-            draw.text(nameCoord, "%d " % x + app.getEntry("Player %d" % x), font=font, fill="black")
-    
-
+            nameCoord = (82 + ((-4+x)*600),451) 
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=font, fill="black")
+    if playerNumber == 6:
+        for x in range(1, 4):
+            nameCoord = (82 + ((-1+x)*600),171) 
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=font, fill="black")
+        for x in range(4, 7):
+            nameCoord = (82 + ((-4+x)*600),451) 
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=font, fill="black")
+    if playerNumber == 7:
+        for x in range(1, 4):
+            nameCoord = (82 + ((-1+x)*600),171) 
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmaller, fill="black")
+        for x in range(4, 7):
+            nameCoord = (82 + ((-4+x)*600),451) 
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmaller, fill="black")
+        for x in range(7, 8):
+            nameCoord = (682,661) 
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmaller, fill="black")    
     cv2_im_processed = cv2.cvtColor(np.array(pil_im), cv2.COLOR_RGB2BGR) 
     #test image resize 
     smaller18 = cv2.resize(img21, (0,0), fx=0.5, fy=0.5) 
