@@ -16,7 +16,7 @@ app.addOptionBox("Number of Players", ["4", "5", "6", "7", "8", "9", "10"])
 for x in range(1, 5):
     app.addLabelEntry("Player %d" % x)
 for y in range(1, (4*3)+1):
-    app.addLabelOptionBox("Character %d" % y, ["Android 16", "Anroid 17", "Android 18", 
+    app.addLabelOptionBox("Character %d" % y, ["Android 16", "Android 17", "Android 18", 
     "Android 21", "Bardock", "Beerus", "Broly", "Cell", "Cooler", "Frieza", "Ginyu", 
     "Gohan (Adult)", "Gohan (Teen)", "Goku (Base)", "Goku (SSJ)", "Goku (SSB)", "Goku Black",
     "Gotenks", "Hit", "Krillin", "Nappa", "Piccolo", "Tien", "Trunks", "Vegeta (Base)",
