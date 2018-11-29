@@ -140,9 +140,75 @@ def createImage():
     smaller18 = cv2.resize(img21, (0,0), fx=0.5, fy=0.5) 
     #if statement to place characters on leaderboard
 
-    def getCharImageFromEntry:
+    def placeCharImage():
         playerNumber = int(app.getOptionBox("Number of Players"))
-        for x in range(1, )
+        for x in range(1, playerNumber+1):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            getCharacterFromEntry(characterEntry)
+            
+    
+    def getCharacterFromEntry(characterEntry):
+        if(characterEntry == "Android 16"):
+            return "char images/16.png"
+        if(characterEntry == "Android 17"):
+            return "char images/17.png"
+        if(characterEntry == "Android 18"):
+            return "char images/18.png"
+        if(characterEntry == "Android 21"):
+            return "char images/21.png" 
+        if(characterEntry == "Bardock"):
+            return "char images/bardock.png"  
+        if(characterEntry == "Beerus"):
+            return "char images/beerus.png"  
+        if(characterEntry == "Broly"):
+            return "char images/broly.png" 
+        if(characterEntry == "Cell"):
+            return "char images/cell.png" 
+        if(characterEntry == "Cooler"):
+            return "char images/cooler.png" 
+        if(characterEntry == "Frieza"):
+            return "char images/frieza.png" 
+        if(characterEntry == "Ginyu"):
+            return "char images/ginyu.png" 
+        if(characterEntry == "Gohan (Adult)"):
+            return "char images/gohanadult.png" 
+        if(characterEntry == "Gohan (Teen)"):
+            return "char images/gohanteen.png" 
+        if(characterEntry == "Goku (Base)"):
+            return "char images/gokubase.png" 
+        if(characterEntry == "Goku (SSJ)"):
+            return "char images/gokus.png" 
+        if(characterEntry == "Goku (Blue)"):
+            return "char images/gokublue.png" 
+        if(characterEntry == "Gotenks"):
+            return "char images/gotenks.png" 
+        if(characterEntry == "Hit"):
+            return "char images/hit.png" 
+        if(characterEntry == "Krillin"):
+            return "char images/krillin.png" 
+        if(characterEntry == "Nappa"):
+            return "char images/nappa.png" 
+        if(characterEntry == "Piccolo"):
+            return "char images/piccolo.png" 
+        if(characterEntry == "Tien"):
+            return "char images/tien.png" 
+        if(characterEntry == "Trunks"):
+            return "char images/trunks.png" 
+        if(characterEntry == "Vegeta (Base)"):
+            return "char images/vegetabase.png" 
+        if(characterEntry == "Vegeta (SSJ)"):
+            return "char images/vegetas.png" 
+        if(characterEntry == "Vegeta (Blue)"):
+            return "char images/bardock.png" 
+        if(characterEntry == "Bardock"):
+            return "char images/bardock.png" 
+        if(characterEntry == "Vegito"):
+            return "char images/vegito.png" 
+        if(characterEntry == "Yamcha"):
+            return "char images/yamcha.png" 
+        if(characterEntry == "Zamasu"):
+            return "char images/zamasu.png" 
+        
 
 
 
