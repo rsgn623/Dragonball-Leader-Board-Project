@@ -70,6 +70,7 @@ def transparentOverlay(src , overlay , pos=(0,0),scale = 1):
             alpha = float(overlay[i][j][3]/255.0) # read the alpha channel 
             src[x+i][y+j] = alpha*overlay[i][j][:3]+(1-alpha)*src[x+i][y+j]
     return src
+global result
 def createImage():
     #read background 
     backgroundImg = cv2.imread('empty blue ice.png', cv2.IMREAD_COLOR)
@@ -88,7 +89,7 @@ def createImage():
             nameCoord = (82 + ((-1+x)*600),171) 
             draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=font, fill="black")
         for x in range(4, 5):
-            nameCoord = (682,451) 
+            nameCoord = (682,531) 
             draw.text(nameCoord, "%d " % x + app.getEntry("Player %d" % x), font=font, fill="black")
     if playerNumber == 5:
         for x in range(1, 4):
@@ -138,15 +139,6 @@ def createImage():
     cv2_im_processed = cv2.cvtColor(np.array(pil_im), cv2.COLOR_RGB2BGR) 
     #test image resize 
     smaller18 = cv2.resize(img21, (0,0), fx=0.5, fy=0.5) 
-    #if statement to place characters on leaderboard
-
-    def placeCharImage():
-        playerNumber = int(app.getOptionBox("Number of Players"))
-        for x in range(1, playerNumber+1):
-            characterEntry = app.getOptionBox("Character %d" % x)
-            getCharacterFromEntry(characterEntry)
-            
-    
     def getCharacterFromEntry(characterEntry):
         if(characterEntry == "Android 16"):
             return "char images/16.png"
@@ -208,23 +200,35 @@ def createImage():
             return "char images/yamcha.png" 
         if(characterEntry == "Zamasu"):
             return "char images/zamasu.png" 
-        
-
-
-
-    result = transparentOverlay(cv2_im_processed,smaller18,(300,0),0.7)
-
-    """
-    def getPlayerValues():
-        playerValues = {}
-        for x in range(1,4):
-            #makes list of player name and characters they play
-            playerValues["Player %d Name" % x] = app.getEntry("Player %d" % x)
-            playerValues["Character %d" % x] = app.getOptionBox("Character %d" %x)
-            playerValues["Character %d" % (x + 1)] = app.getOptionBox("Character %d" % (x + 1))
-            playerValues["Character %d" % (x + 2)] = app.getOptionBox("Character %d" % (x + 2)) 
-    app.getPlayerValues()
-    """
+         #if statement to place characters on leaderboard
+    
+    if playerNumber == 4:
+        for x in range(1, 4):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry)
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.5, fy=0.5)    
+            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-1+x) *100),230),0.7)
+        for x in range(4, 7):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry)                
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.7, fy=0.7) 
+            result = transparentOverlay(cv2_im_processed,charResize,(682 + ((-4+x) * 150),230),0.7)
+        for x in range(7, 10):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            getCharacterFromEntry(characterEntry) 
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.7, fy=0.7) 
+            result = transparentOverlay(cv2_im_processed,charResize,(1282 + ((-7+x) * 150),230),0.7)
+        for x in range(10, 13):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry) 
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.7, fy=0.7) 
+            result = transparentOverlay(cv2_im_processed,charResize,(682 + ((-10+x) * 150),600),0.7)
+                
+    #result = transparentOverlay(cv2_im_processed,smaller18,(300,0),0.7)
     cv2.imshow("image", result)  
     
 
