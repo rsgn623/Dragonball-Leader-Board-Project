@@ -387,6 +387,61 @@ def createImage():
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
             charResize = cv2.resize(charImg, (0,0), fx=0.5, fy=0.5) 
             result = transparentOverlay(cv2_im_processed,charResize,(1282 + ((-22+x) * 100),510),0.7)
+    if playerNumber == 9:
+        for x in range(1, 4):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry)
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.5, fy=0.5)    
+            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-1+x) *90),180),0.7)
+        for x in range(4, 7):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry)                
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.5, fy=0.5) 
+            result = transparentOverlay(cv2_im_processed,charResize,(382 + ((-4+x) * 90),180),0.7)
+        for x in range(7, 10):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            getCharacterFromEntry(characterEntry) 
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.5, fy=0.5) 
+            result = transparentOverlay(cv2_im_processed,charResize,(682 + ((-7+x) * 90),180),0.7)
+        for x in range(10, 13):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry) 
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.5, fy=0.5) 
+            result = transparentOverlay(cv2_im_processed,charResize,(982 + ((-10+x) * 90),180),0.7)
+        for x in range(13, 16):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry) 
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.5, fy=0.5) 
+            result = transparentOverlay(cv2_im_processed,charResize,(1282 + ((-13+x) * 90),180),0.7)
+        for x in range(16, 19):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry) 
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.5, fy=0.5) 
+            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-16+x) * 90),511),0.7)
+        for x in range(19, 22):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry) 
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.5, fy=0.5) 
+            result = transparentOverlay(cv2_im_processed,charResize,(382 + ((-19+x) * 90),510),0.7)
+        for x in range(22, 25):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry) 
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.5, fy=0.5) 
+            result = transparentOverlay(cv2_im_processed,charResize,(682 + ((-22+x) * 90),510),0.7)
+        for x in range(25, 28):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry) 
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.5, fy=0.5) 
+            result = transparentOverlay(cv2_im_processed,charResize,(982 + ((-25+x) * 90),510),0.7)
     #result = transparentOverlay(cv2_im_processed,smaller18,(300,0),0.7)
     cv2.imshow("image", result)  
     
