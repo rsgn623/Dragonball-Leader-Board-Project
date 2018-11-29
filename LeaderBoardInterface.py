@@ -83,6 +83,9 @@ def createImage():
     fontSmaller = ImageFont.truetype("Arial.ttf", 20)
     fontSmallest = ImageFont.truetype("Arial.ttf", 15)
     playerNumber = int(app.getOptionBox("Number of Players"))
+    draw.text((10,10), app.getEntry("Left Side Text"), font=font, fill="black")
+    draw.text((1200,10), app.getEntry("Right Side Text"), font=font, fill="black")
+    #draw.text((825,10), app.getEntry("O"), font=dragonFont, fill="black")
     #if statements to write names for number of players
     if playerNumber == 4:
         for x in range(1, 4):
@@ -170,8 +173,10 @@ def createImage():
             return "char images/gokubase.png" 
         if(characterEntry == "Goku (SSJ)"):
             return "char images/gokus.png" 
-        if(characterEntry == "Goku (Blue)"):
+        if(characterEntry == "Goku (SSB)"):
             return "char images/gokublue.png" 
+        if(characterEntry == "Goku Black"):
+            return "char images/gokublack.png" 
         if(characterEntry == "Gotenks"):
             return "char images/gotenks.png" 
         if(characterEntry == "Hit"):
@@ -191,9 +196,7 @@ def createImage():
         if(characterEntry == "Vegeta (SSJ)"):
             return "char images/vegetas.png" 
         if(characterEntry == "Vegeta (Blue)"):
-            return "char images/bardock.png" 
-        if(characterEntry == "Bardock"):
-            return "char images/bardock.png" 
+            return "char images/vegetablue.png" 
         if(characterEntry == "Vegito"):
             return "char images/vegito.png" 
         if(characterEntry == "Yamcha"):
@@ -207,25 +210,25 @@ def createImage():
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry)
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.7, fy=0.7)    
+            charResize = cv2.resize(charImg, (0,0), fx=0.3, fy=0.3)    
             result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-1+x) *150),230),0.7)
         for x in range(4, 7):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry)                
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.7, fy=0.7) 
+            charResize = cv2.resize(charImg, (0,0), fx=0.3, fy=0.3) 
             result = transparentOverlay(cv2_im_processed,charResize,(632 + ((-4+x) * 150),230),0.7)
         for x in range(7, 10):
             characterEntry = app.getOptionBox("Character %d" % x)
             getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.7, fy=0.7) 
+            charResize = cv2.resize(charImg, (0,0), fx=0.3, fy=0.3) 
             result = transparentOverlay(cv2_im_processed,charResize,(1182 + ((-7+x) * 150),230),0.7)
         for x in range(10, 13):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.7, fy=0.7) 
+            charResize = cv2.resize(charImg, (0,0), fx=0.3, fy=0.3) 
             result = transparentOverlay(cv2_im_processed,charResize,(632 + ((-10+x) * 150),600),0.7)
     if playerNumber == 5:
         for x in range(1, 4):
@@ -444,7 +447,7 @@ def createImage():
             result = transparentOverlay(cv2_im_processed,charResize,(982 + ((-25+x) * 90),510),0.7)
     #result = transparentOverlay(cv2_im_processed,smaller18,(300,0),0.7)
     cv2.imshow("image", result)  
-    
+    cv2.imwrite('leader board.png', result)
 
     
     
