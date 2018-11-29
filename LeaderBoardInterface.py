@@ -80,14 +80,31 @@ def createImage():
     draw = ImageDraw.Draw(pil_im)  
     font = ImageFont.truetype("Arial.ttf", 25)
     playerNumber = int(app.getOptionBox("Number of Players"))
-    #if playerNumber 
-    for x in range(1, playerNumber+1):
-        nameCoord = (100 + (x*100),200) 
-        draw.text(nameCoord, app.getEntry("Player %d" % x), font=font, fill="black")
-
+    if playerNumber == 4:
+        for x in range(1, 4):
+            nameCoord = (82 + ((-1+x)*600),171) 
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=font, fill="black")
+        for x in range(4, 5):
+            nameCoord = (682,451) 
+            draw.text(nameCoord, "%d " % x + app.getEntry("Player %d" % x), font=font, fill="black")
+    if playerNumber == 5:
+        for x in range(1, 4):
+            nameCoord = (82 + ((-1+x)*600),171) 
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=font, fill="black")
+        for x in range(4, 6):
+            nameCoord = (82 + ((-1+x)*600),451) 
+            draw.text(nameCoord, "%d " % x + app.getEntry("Player %d" % x), font=font, fill="black")
+    
 
     cv2_im_processed = cv2.cvtColor(np.array(pil_im), cv2.COLOR_RGB2BGR) 
-    result = transparentOverlay(cv2_im_processed,img21,(300,0),0.7)
+    #test image resize 
+    smaller18 = cv2.resize(img21, (0,0), fx=0.5, fy=0.5) 
+
+    #read player characters and resize and place images
+
+
+    result = transparentOverlay(cv2_im_processed,smaller18,(300,0),0.7)
+
     """
     def getPlayerValues():
         playerValues = {}
