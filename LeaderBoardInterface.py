@@ -80,7 +80,9 @@ def createImage():
     draw = ImageDraw.Draw(pil_im)  
     font = ImageFont.truetype("Arial.ttf", 25)
     fontSmaller = ImageFont.truetype("Arial.ttf", 20)
+    fontSmallest = ImageFont.truetype("Arial.ttf", 15)
     playerNumber = int(app.getOptionBox("Number of Players"))
+    #if statements to write names for number of players
     if playerNumber == 4:
         for x in range(1, 4):
             nameCoord = (82 + ((-1+x)*600),171) 
@@ -111,12 +113,37 @@ def createImage():
             draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmaller, fill="black")
         for x in range(7, 8):
             nameCoord = (682,661) 
-            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmaller, fill="black")    
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmaller, fill="black")
+    if playerNumber == 8:    
+        for x in range(1, 5):
+            nameCoord = (82 + ((-1+x)*400),171) 
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmallest, fill="black")
+        for x in range(5, 9):
+            nameCoord = (82 + ((-5+x)*400),501) 
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmallest, fill="black")
+    if playerNumber == 9:    
+        for x in range(1, 6):
+            nameCoord = (82 + ((-1+x)*300),171) 
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmallest, fill="black")
+        for x in range(6, 10):
+            nameCoord = (82 + ((-6+x)*300),501) 
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmallest, fill="black")  
+    if playerNumber == 10:    
+        for x in range(1, 6):
+            nameCoord = (82 + ((-1+x)*300),171) 
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmallest, fill="black")
+        for x in range(6, 11):
+            nameCoord = (82 + ((-6+x)*300),501) 
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmallest, fill="black")          
     cv2_im_processed = cv2.cvtColor(np.array(pil_im), cv2.COLOR_RGB2BGR) 
     #test image resize 
     smaller18 = cv2.resize(img21, (0,0), fx=0.5, fy=0.5) 
+    #if statement to place characters on leaderboard
 
-    #read player characters and resize and place images
+    def getCharImageFromEntry:
+        playerNumber = int(app.getOptionBox("Number of Players"))
+        for x in range(1, )
+
 
 
     result = transparentOverlay(cv2_im_processed,smaller18,(300,0),0.7)
