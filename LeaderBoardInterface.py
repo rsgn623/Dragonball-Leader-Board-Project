@@ -81,10 +81,13 @@ def createImage():
     font = ImageFont.truetype("Arial.ttf", 25)
     fontSmaller = ImageFont.truetype("Arial.ttf", 20)
     fontSmallest = ImageFont.truetype("Arial.ttf", 15)
+    dragonFont = ImageFont.truetype("saiyan.ttf", 150)
+    dragonFontLeft = ImageFont.truetype("saiyanleft.ttf", 60)
+    dragonFontRight = ImageFont.truetype("saiyanright.ttf", 60)
     playerNumber = int(app.getOptionBox("Number of Players"))
-    draw.text((10,10), app.getEntry("Left Side Text"), font=font, fill="black")
-    draw.text((1200,10), app.getEntry("Right Side Text"), font=font, fill="black")
-    #draw.text((825,10), app.getEntry("O"), font=dragonFont, fill="black")
+    draw.text((30,10), app.getEntry("Left Side Text"), font=dragonFontLeft, fill=(255,234,0))
+    draw.text((1000,10), app.getEntry("Right Side Text"), font=dragonFontRight, fill="red")
+    draw.text((825,10), "O", font=dragonFont, fill="orange")
     #if statements to write names for number of players
     if playerNumber == 4:
         for x in range(1, 4):
