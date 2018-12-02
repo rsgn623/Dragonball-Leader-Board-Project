@@ -35,9 +35,8 @@ def addPlayerEntries():
             app.removeOptionBox("Character %d" % x)
         for x in range(1, y+1):
             app.addLabelEntry("Player %d" % x)
-            app.addCharacterChoices
         for x in range(1,(y * 3)+1):
-            app.addLabelOptionBox("Character %d" % x, ["Android 16", "Anroid 17", "Android 18", 
+            app.addLabelOptionBox("Character %d" % x, ["Android 16", "Android 17", "Android 18", 
         "Android 21", "Bardock", "Beerus", "Broly", "Cell", "Cooler", "Frieza", "Ginyu", 
         "Gohan (Adult)", "Gohan (Teen)", "Goku (Base)", "Goku (SSJ)", "Goku (SSB)", "Goku Black",
         "Gotenks", "Hit", "Krillin", "Nappa", "Piccolo", "Tien", "Trunks", "Vegeta (Base)",
@@ -72,18 +71,24 @@ def transparentOverlay(src , overlay , pos=(0,0),scale = 1):
     return src
 global result
 def createImage():
-    #read background 
-    backgroundImg = cv2.imread('empty blue ice.png', cv2.IMREAD_COLOR)
+    #first, check user input
+    if checkUserInput():
+        pass
+    else:
+        return
+    #read background image
+    backgroundImg = cv2.imread('background.png', cv2.IMREAD_COLOR)
     #imagedraw using custom font
     cv2_im_rgb = cv2.cvtColor(backgroundImg,cv2.COLOR_BGR2RGB) 
     pil_im = Image.fromarray(cv2_im_rgb)  
     draw = ImageDraw.Draw(pil_im)  
-    font = ImageFont.truetype("Arial.ttf", 25)
-    fontSmaller = ImageFont.truetype("Arial.ttf", 20)
-    fontSmallest = ImageFont.truetype("Arial.ttf", 15)
-    dragonFont = ImageFont.truetype("saiyan.ttf", 150)
-    dragonFontLeft = ImageFont.truetype("saiyanleft.ttf", 60)
-    dragonFontRight = ImageFont.truetype("saiyanright.ttf", 60)
+    font = ImageFont.truetype("fonts/Arial.ttf", 25)
+    fontSmaller = ImageFont.truetype("fonts/Arial.ttf", 20)
+    fontSmallest = ImageFont.truetype("fonts/Arial.ttf", 15)
+    dragonFont = ImageFont.truetype("fonts/saiyan.ttf", 150)
+    #draws the left and right side text from the entry boxes. the saiyan fonts are only used for the header
+    dragonFontLeft = ImageFont.truetype("fonts/saiyanleft.ttf", 60)
+    dragonFontRight = ImageFont.truetype("fonts/saiyanright.ttf", 60)
     playerNumber = int(app.getOptionBox("Number of Players"))
     draw.text((30,10), app.getEntry("Left Side Text"), font=dragonFontLeft, fill=(255,234,0))
     draw.text((1000,10), app.getEntry("Right Side Text"), font=dragonFontRight, fill="red")
@@ -207,8 +212,7 @@ def createImage():
             return "char images/yamcha.png" 
         if(characterEntry == "Zamasu"):
             return "char images/zamasu.png" 
-         #if statement to place characters on leaderboard
-    
+#if statement to place characters on leaderboard    
     if playerNumber == 4:
         for x in range(1, 4):
             characterEntry = app.getOptionBox("Character %d" % x)
@@ -395,68 +399,138 @@ def createImage():
             charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25) 
             result = transparentOverlay(cv2_im_processed,charResize,(1282 + ((-22+x) * 100),510),0.7)
     if playerNumber == 9:
+        imageScale = .21
         for x in range(1, 4):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry)
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25)    
+            charResize = cv2.resize(charImg, (0,0), fx=imageScale, fy=imageScale)    
             result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-1+x) *90),180),0.7)
         for x in range(4, 7):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry)                
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25) 
+            charResize = cv2.resize(charImg, (0,0), fx=imageScale, fy=imageScale) 
             result = transparentOverlay(cv2_im_processed,charResize,(382 + ((-4+x) * 90),180),0.7)
         for x in range(7, 10):
             characterEntry = app.getOptionBox("Character %d" % x)
             getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25) 
+            charResize = cv2.resize(charImg, (0,0), fx=imageScale, fy=imageScale) 
             result = transparentOverlay(cv2_im_processed,charResize,(682 + ((-7+x) * 90),180),0.7)
         for x in range(10, 13):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25) 
+            charResize = cv2.resize(charImg, (0,0), fx=imageScale, fy=imageScale) 
             result = transparentOverlay(cv2_im_processed,charResize,(982 + ((-10+x) * 90),180),0.7)
         for x in range(13, 16):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25) 
+            charResize = cv2.resize(charImg, (0,0), fx=imageScale, fy=imageScale) 
             result = transparentOverlay(cv2_im_processed,charResize,(1282 + ((-13+x) * 90),180),0.7)
         for x in range(16, 19):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25) 
+            charResize = cv2.resize(charImg, (0,0), fx=imageScale, fy=imageScale) 
             result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-16+x) * 90),511),0.7)
         for x in range(19, 22):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25) 
+            charResize = cv2.resize(charImg, (0,0), fx=0.2, fy=0.2) 
             result = transparentOverlay(cv2_im_processed,charResize,(382 + ((-19+x) * 90),510),0.7)
         for x in range(22, 25):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25) 
+            charResize = cv2.resize(charImg, (0,0), fx=imageScale, fy=imageScale) 
             result = transparentOverlay(cv2_im_processed,charResize,(682 + ((-22+x) * 90),510),0.7)
         for x in range(25, 28):
             characterEntry = app.getOptionBox("Character %d" % x) 
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED) 
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25) 
+            charResize = cv2.resize(charImg, (0,0), fx=imageScale, fy=imageScale) 
             result = transparentOverlay(cv2_im_processed,charResize,(982 + ((-25+x) * 90),510),0.7)
-    #result = transparentOverlay(cv2_im_processed,smaller18,(300,0),0.7)
+    if playerNumber == 10:
+        imageScale = .21
+        for x in range(1, 4):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry)
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=imageScale, fy=imageScale)    
+            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-1+x) *90),180),0.7)
+        for x in range(4, 7):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry)                
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=imageScale, fy=imageScale) 
+            result = transparentOverlay(cv2_im_processed,charResize,(382 + ((-4+x) * 90),180),0.7)
+        for x in range(7, 10):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            getCharacterFromEntry(characterEntry) 
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=imageScale, fy=imageScale) 
+            result = transparentOverlay(cv2_im_processed,charResize,(682 + ((-7+x) * 90),180),0.7)
+        for x in range(10, 13):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry) 
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.2, fy=0.2) 
+            result = transparentOverlay(cv2_im_processed,charResize,(982 + ((-10+x) * 90),180),0.7)
+        for x in range(13, 16):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry) 
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.2, fy=0.2) 
+            result = transparentOverlay(cv2_im_processed,charResize,(1282 + ((-13+x) * 90),180),0.7)
+        for x in range(16, 19):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry) 
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.2, fy=0.2) 
+            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-16+x) * 90),511),0.7)
+        for x in range(19, 22):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry) 
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.2, fy=0.2) 
+            result = transparentOverlay(cv2_im_processed,charResize,(382 + ((-19+x) * 90),510),0.7)
+        for x in range(22, 25):
+            characterEntry = app.getOptionBox("Character %d" % x)
+            charImgString = getCharacterFromEntry(characterEntry) 
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
+            charResize = cv2.resize(charImg, (0,0), fx=0.2, fy=0.2) 
+            result = transparentOverlay(cv2_im_processed,charResize,(682 + ((-22+x) * 90),510),0.7)
+        for x in range(25, 28):
+            characterEntry = app.getOptionBox("Character %d" % x) 
+            charImgString = getCharacterFromEntry(characterEntry) 
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED) 
+            charResize = cv2.resize(charImg, (0,0), fx=0.2, fy=0.2) 
+            result = transparentOverlay(cv2_im_processed,charResize,(982 + ((-25+x) * 90),510),0.7)
+        for x in range(28, 31):
+            characterEntry = app.getOptionBox("Character %d" % x) 
+            charImgString = getCharacterFromEntry(characterEntry) 
+            charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED) 
+            charResize = cv2.resize(charImg, (0,0), fx=0.2, fy=0.2) 
+            result = transparentOverlay(cv2_im_processed,charResize,(1282 + ((-28+x) * 90),510),0.7)
     cv2.imshow("image", result)  
-    cv2.imwrite('leader board.png', result)
-
-    
-    
+    cv2.imwrite('leader board.png', result) 
+#checks left, right entry boxes to ensure user hasn't input too many characters
+def checkUserInput():
+    inputLeft = app.getEntry("Left Side Text")
+    inputRight = app.getEntry("Right Side Text")
+    if len(inputLeft) <= 28 and len(inputRight) <= 25:
+        return True  
+    elif len(inputLeft) > 28:
+        app.errorBox("Too many characters", "Maximum of 28 characters on the left side of image. You have %d" % len(inputLeft))
+        return False
+    elif len(inputRight) > 25:
+        app.errorBox("Too many characters", "Maximum of 25 characters on the right side of image. You have %d" % len(inputRight))
+        return False
 app.addButton("Create Image", createImage)
-
 app.go()
 
     
