@@ -77,18 +77,18 @@ def createImage():
     else:
         return
     #read background image
-    backgroundImg = cv2.imread('background.png', cv2.IMREAD_COLOR)
+    backgroundImg = cv2.imread('/Users/Stephen/Documents/Visual Studio Code Workspace/background/background.png', cv2.IMREAD_COLOR)
     #imagedraw using custom font
     cv2_im_rgb = cv2.cvtColor(backgroundImg,cv2.COLOR_BGR2RGB) 
     pil_im = Image.fromarray(cv2_im_rgb)  
     draw = ImageDraw.Draw(pil_im)  
     font = ImageFont.truetype("fonts/Arial.ttf", 25)
-    fontSmaller = ImageFont.truetype("fonts/Arial.ttf", 20)
-    fontSmallest = ImageFont.truetype("fonts/Arial.ttf", 15)
-    dragonFont = ImageFont.truetype("fonts/saiyan.ttf", 150)
+    fontSmaller = ImageFont.truetype("/Users/Stephen/Documents/Visual Studio Code Workspace/fonts/Arial.ttf", 20)
+    fontSmallest = ImageFont.truetype("/Users/Stephen/Documents/Visual Studio Code Workspace/fonts/Arial.ttf", 15)
+    dragonFont = ImageFont.truetype("/Users/Stephen/Documents/Visual Studio Code Workspace/fonts/saiyan.ttf", 150)
     #draws the left and right side text from the entry boxes. the saiyan fonts are only used for the header
-    dragonFontLeft = ImageFont.truetype("fonts/saiyanleft.ttf", 60)
-    dragonFontRight = ImageFont.truetype("fonts/saiyanright.ttf", 60)
+    dragonFontLeft = ImageFont.truetype("/Users/Stephen/Documents/Visual Studio Code Workspace/fonts/saiyanleft.ttf", 60)
+    dragonFontRight = ImageFont.truetype("/Users/Stephen/Documents/Visual Studio Code Workspace/fonts/saiyanright.ttf", 60)
     playerNumber = int(app.getOptionBox("Number of Players"))
     draw.text((30,10), app.getEntry("Left Side Text"), font=dragonFontLeft, fill=(255,234,0))
     draw.text((1000,10), app.getEntry("Right Side Text"), font=dragonFontRight, fill="red")
@@ -149,69 +149,69 @@ def createImage():
     cv2_im_processed = cv2.cvtColor(np.array(pil_im), cv2.COLOR_RGB2BGR) 
     def getCharacterFromEntry(characterEntry):
         if(characterEntry == "Android 16"):
-            return "char images/16.png"
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/16.png"
         if(characterEntry == "Android 17"):
-            return "char images/17.png"
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/17.png"
         if(characterEntry == "Android 18"):
-            return "char images/18.png"
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/18.png"
         if(characterEntry == "Android 21"):
-            return "char images/21.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/21.png" 
         if(characterEntry == "Bardock"):
-            return "char images/bardock.png"  
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/bardock.png"  
         if(characterEntry == "Beerus"):
-            return "char images/beerus.png"  
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/beerus.png"  
         if(characterEntry == "Broly"):
-            return "char images/broly.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/broly.png" 
         if(characterEntry == "Cell"):
-            return "char images/cell.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/cell.png" 
         if(characterEntry == "Cooler"):
-            return "char images/cooler.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/cooler.png" 
         if(characterEntry == "Frieza"):
-            return "char images/frieza.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/frieza.png" 
         if(characterEntry == "Ginyu"):
-            return "char images/ginyu.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/ginyu.png" 
         if(characterEntry == "Gohan (Adult)"):
-            return "char images/gohanadult.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/gohanadult.png" 
         if(characterEntry == "Gohan (Teen)"):
-            return "char images/gohanteen.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/gohanteen.png" 
         if(characterEntry == "Goku (Base)"):
-            return "char images/gokubase.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/gokubase.png" 
         if(characterEntry == "Goku (SSJ)"):
-            return "char images/gokus.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/gokus.png" 
         if(characterEntry == "Goku (SSB)"):
-            return "char images/gokublue.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/gokublue.png" 
         if(characterEntry == "Goku Black"):
-            return "char images/gokublack.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/gokublack.png" 
         if(characterEntry == "Gotenks"):
-            return "char images/gotenks.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/gotenks.png" 
         if(characterEntry == "Hit"):
-            return "char images/hit.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/hit.png" 
         if(characterEntry == "Kid Buu"):
-            return "char images/kbuu.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/kbuu.png" 
         if(characterEntry == "Krillin"):
-            return "char images/krillin.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/krillin.png" 
         if(characterEntry == "Majin Buu"):
-            return "char images/mbuu.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/mbuu.png" 
         if(characterEntry == "Nappa"):
-            return "char images/nappa.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/nappa.png" 
         if(characterEntry == "Piccolo"):
-            return "char images/piccolo.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/piccolo.png" 
         if(characterEntry == "Tien"):
-            return "char images/tien.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/tien.png" 
         if(characterEntry == "Trunks"):
-            return "char images/trunks.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/trunks.png" 
         if(characterEntry == "Vegeta (Base)"):
-            return "char images/vegetabase.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/vegetabase.png" 
         if(characterEntry == "Vegeta (SSJ)"):
-            return "char images/vegetas.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/vegetas.png" 
         if(characterEntry == "Vegeta (SSB)"):
-            return "char images/vegetablue.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/vegetablue.png" 
         if(characterEntry == "Vegito"):
-            return "char images/vegito.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/vegito.png" 
         if(characterEntry == "Yamcha"):
-            return "char images/yamcha.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/yamcha.png" 
         if(characterEntry == "Zamasu"):
-            return "char images/zamasu.png" 
+            return "/Users/Stephen/Documents/Visual Studio Code Workspace/char images/zamasu.png" 
 #if statement to place characters on leaderboard    
     if playerNumber == 4:
         for x in range(1, 4):
