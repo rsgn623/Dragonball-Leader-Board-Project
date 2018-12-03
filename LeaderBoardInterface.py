@@ -6,13 +6,19 @@ from PIL import ImageFont, ImageDraw, Image
 app = gui("Dragonball Fighterz Leaderd Board Creator")
 
 app.addLabelEntry("Left Side Text")
+app.addLabelOptionBox("Left Side Text Color", ["Black", "Blue", "Grey", "Orange", "Red", "White", "Yellow"])
+app.setOptionBox("Left Side Text Color", 6)
 app.addLabelEntry("Right Side Text")
-app.getEntry("Left Side Text")
-app.getEntry("Right Side Text")
+app.addLabelOptionBox("Right Side Text Color", ["Black", "Blue", "Grey", "Orange", "Red", "White", "Yellow"])
+app.setOptionBox("Right Side Text Color", 4)
+
+
     
 
 #Choose number of players that will be present on leaderboard 
 app.addOptionBox("Number of Players", ["4", "5", "6", "7", "8", "9", "10"])
+app.addLabelOptionBox("Color of Player Text", ["Black", "Blue", "Grey", "Orange", "Red", "White", "Yellow"])
+app.setOptionBox("Color of Player Text", 0)
 for x in range(1, 5):
     app.addLabelEntry("Player %d" % x)
 for y in range(1, (4*3)+1):
@@ -90,8 +96,25 @@ def createImage():
     dragonFontLeft = ImageFont.truetype("/Users/Stephen/Documents/Visual Studio Code Workspace/fonts/saiyanleft.ttf", 60)
     dragonFontRight = ImageFont.truetype("/Users/Stephen/Documents/Visual Studio Code Workspace/fonts/saiyanright.ttf", 60)
     playerNumber = int(app.getOptionBox("Number of Players"))
-    draw.text((30,10), app.getEntry("Left Side Text"), font=dragonFontLeft, fill=(255,234,0))
-    draw.text((1000,10), app.getEntry("Right Side Text"), font=dragonFontRight, fill="red")
+    
+    
+    textColorLeft = str(app.getOptionBox("Left Side Text Color"))
+    if textColorLeft is "Yellow":
+        textColorLeft = (255,234,0)
+    else:
+        pass
+    textColorRight = str(app.getOptionBox("Right Side Text Color"))
+    if textColorLeft is "Yellow":
+        textColorLeft = (255,234,0)
+    else:
+        pass
+    textColorPlayer = str(app.getOptionBox("Color of Player Text"))
+    if textColorPlayer is "Yellow":
+        textColorLeft = (255,234,0)
+    else:
+        pass
+    draw.text((30,10), app.getEntry("Left Side Text"), font=dragonFontLeft, fill=textColorLeft)
+    draw.text((1000,10), app.getEntry("Right Side Text"), font=dragonFontRight, fill=textColorRight)
     draw.text((825,10), "O", font=dragonFont, fill="orange")
     #if statements to write names for number of players
     if playerNumber == 4:
@@ -517,7 +540,7 @@ def createImage():
             charResize = cv2.resize(charImg, (0,0), fx=0.2, fy=0.2) 
             result = transparentOverlay(cv2_im_processed,charResize,(1282 + ((-28+x) * 90),510),0.7)
     cv2.imshow("image", result)  
-    cv2.imwrite('leader board.png', result) 
+    cv2.imwrite('/Users/Stephen/Documents/Visual Studio Code Workspace/leaderboard.png', result) 
 #checks left, right entry boxes to ensure user hasn't input too many characters
 def checkUserInput():
     inputLeft = app.getEntry("Left Side Text")
