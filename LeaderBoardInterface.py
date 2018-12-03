@@ -3,7 +3,7 @@ import numpy as np
 import cv2
 from PIL import ImageFont, ImageDraw, Image  
 
-app = gui("Dragonball Fighterz Leaderd Board Creator")
+app = gui("Dragonball Fighterz Leader Board Creator")
 
 app.addLabelEntry("Left Side Text")
 app.addLabelOptionBox("Left Side Text Color", ["Black", "Blue", "Grey", "Orange", "Red", "White", "Yellow"])
