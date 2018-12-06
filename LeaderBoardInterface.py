@@ -48,11 +48,7 @@ def addPlayerEntries():
         "Gotenks", "Hit", "Krillin", "Nappa", "Piccolo", "Tien", "Trunks", "Vegeta (Base)",
         "Vegeta (SSJ)", "Vegeta (SSB)", "Vegito", "Yamcha", "Zamasu" ])
     lastCount = y
-    print("%d" % lastCount)
-
-
 app.setOptionBoxChangeFunction("Number of Players", addPlayerEntries)
-
 #function overlays transparent image on background
 def transparentOverlay(src , overlay , pos=(0,0),scale = 1):
     """
@@ -77,7 +73,7 @@ def transparentOverlay(src , overlay , pos=(0,0),scale = 1):
     return src
 global result
 def createImage():
-    #first, check user input
+    #checks if left/right header text has too many characters, will stop createImage() 
     if checkUserInput():
         pass
     else:
@@ -90,7 +86,6 @@ def createImage():
     draw = ImageDraw.Draw(pil_im)  
     font = ImageFont.truetype("fonts/Arial.ttf", 25)
     fontSmaller = ImageFont.truetype("/Users/Stephen/Documents/Visual Studio Code Workspace/fonts/Arial.ttf", 20)
-    fontSmallest = ImageFont.truetype("/Users/Stephen/Documents/Visual Studio Code Workspace/fonts/Arial.ttf", 15)
     dragonFont = ImageFont.truetype("/Users/Stephen/Documents/Visual Studio Code Workspace/fonts/saiyan.ttf", 150)
     #draws the left and right side text from the entry boxes. the saiyan fonts are only used for the header
     dragonFontLeft = ImageFont.truetype("/Users/Stephen/Documents/Visual Studio Code Workspace/fonts/saiyanleft.ttf", 60)
@@ -120,55 +115,52 @@ def createImage():
     if playerNumber == 4:
         for x in range(1, 4):
             nameCoord = (82 + ((-1+x)*550),171) 
-            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=font, fill="black")
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=font, fill=textColorPlayer)
         for x in range(4, 5):
             nameCoord = (632,531) 
-            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=font, fill="black")
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=font, fill=textColorPlayer)
     if playerNumber == 5:
         for x in range(1, 4):
             nameCoord = (82 + ((-1+x)*550),171) 
-            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=font, fill="black")
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=font, fill=textColorPlayer)
         for x in range(4, 6):
             nameCoord = (82 + ((-4+x)*550),531) 
-            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=font, fill="black")
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=font, fill=textColorPlayer)
     if playerNumber == 6:
         for x in range(1, 4):
             nameCoord = (82 + ((-1+x)*550),171) 
-            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=font, fill="black")
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=font, fill=textColorPlayer)
         for x in range(4, 7):
             nameCoord = (82 + ((-4+x)*550),531) 
-            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=font, fill="black")
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=font, fill=textColorPlayer)
     if playerNumber == 7:
-        for x in range(1, 4):
-            nameCoord = (82 + ((-1+x)*550),141) 
-            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmaller, fill="black")
-        for x in range(4, 7):
-            nameCoord = (82 + ((-4+x)*550),401) 
-            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmaller, fill="black")
-        for x in range(7, 8):
-            nameCoord = (632,631) 
-            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmaller, fill="black")
+        for x in range(1, 5):
+            nameCoord = (82 + ((-1+x)*400),171) 
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmaller, fill=textColorPlayer)
+        for x in range(5, 8):
+            nameCoord = (82 + ((-5+x)*400),501) 
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmaller, fill=textColorPlayer)
     if playerNumber == 8:    
         for x in range(1, 5):
             nameCoord = (82 + ((-1+x)*400),171) 
-            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmallest, fill="black")
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmaller, fill=textColorPlayer)
         for x in range(5, 9):
             nameCoord = (82 + ((-5+x)*400),501) 
-            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmallest, fill="black")
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmaller, fill=textColorPlayer)
     if playerNumber == 9:    
         for x in range(1, 6):
             nameCoord = (82 + ((-1+x)*300),171) 
-            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmallest, fill="black")
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmaller, fill=textColorPlayer)
         for x in range(6, 10):
             nameCoord = (82 + ((-6+x)*300),501) 
-            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmallest, fill="black")  
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmaller, fill=textColorPlayer)  
     if playerNumber == 10:    
         for x in range(1, 6):
             nameCoord = (82 + ((-1+x)*300),171) 
-            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmallest, fill="black")
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmaller, fill=textColorPlayer)
         for x in range(6, 11):
             nameCoord = (82 + ((-6+x)*300),501) 
-            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmallest, fill="black")          
+            draw.text(nameCoord, "%d. " % x + app.getEntry("Player %d" % x), font=fontSmaller, fill=textColorPlayer)          
     cv2_im_processed = cv2.cvtColor(np.array(pil_im), cv2.COLOR_RGB2BGR) 
     def getCharacterFromEntry(characterEntry):
         if(characterEntry == "Android 16"):
@@ -276,7 +268,7 @@ def createImage():
             result = transparentOverlay(cv2_im_processed,charResize,(632 + ((-4+x) * 150),230),0.7)
         for x in range(7, 10):
             characterEntry = app.getOptionBox("Character %d" % x)
-            getCharacterFromEntry(characterEntry) 
+            charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
             charResize = cv2.resize(charImg, (0,0), fx=0.3, fy=0.3) 
             result = transparentOverlay(cv2_im_processed,charResize,(1182 + ((-7+x) * 150),230),0.7)
@@ -307,7 +299,7 @@ def createImage():
             result = transparentOverlay(cv2_im_processed,charResize,(632 + ((-4+x) * 150),230),0.7)
         for x in range(7, 10):
             characterEntry = app.getOptionBox("Character %d" % x)
-            getCharacterFromEntry(characterEntry) 
+            charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
             charResize = cv2.resize(charImg, (0,0), fx=0.3, fy=0.3) 
             result = transparentOverlay(cv2_im_processed,charResize,(1182 + ((-7+x) * 150),230),0.7)
@@ -330,97 +322,99 @@ def createImage():
             charResize = cv2.resize(charImg, (0,0), fx=0.3, fy=0.3) 
             result = transparentOverlay(cv2_im_processed,charResize,(1182 + ((-16+x) * 150),600),0.7)
     if playerNumber == 7:
+        imgScale = .22
         for x in range(1, 4):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry)
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25)    
-            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-1+x) *150),180),0.7)
+            charResize = cv2.resize(charImg, (0,0), fx=imgScale, fy=imgScale)    
+            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-1+x) *110),210),0.7)
         for x in range(4, 7):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry)                
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25) 
-            result = transparentOverlay(cv2_im_processed,charResize,(632 + ((-4+x) * 150),180),0.7)
+            charResize = cv2.resize(charImg, (0,0), fx=imgScale, fy=imgScale) 
+            result = transparentOverlay(cv2_im_processed,charResize,(482 + ((-4+x) * 110),210),0.7)
         for x in range(7, 10):
             characterEntry = app.getOptionBox("Character %d" % x)
-            getCharacterFromEntry(characterEntry) 
+            charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25) 
-            result = transparentOverlay(cv2_im_processed,charResize,(1182 + ((-7+x) * 150),180),0.7)
+            charResize = cv2.resize(charImg, (0,0), fx=imgScale, fy=imgScale) 
+            result = transparentOverlay(cv2_im_processed,charResize,(882 + ((-7+x) * 110),210),0.7)
         for x in range(10, 13):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25) 
-            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-10+x) * 150),431),0.7)
+            charResize = cv2.resize(charImg, (0,0), fx=imgScale, fy=imgScale) 
+            result = transparentOverlay(cv2_im_processed,charResize,(1282 + ((-10+x) * 110),200),0.7)
         for x in range(13, 16):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25) 
-            result = transparentOverlay(cv2_im_processed,charResize,(632 + ((-13+x) * 150),431),0.7)
+            charResize = cv2.resize(charImg, (0,0), fx=imgScale, fy=imgScale) 
+            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-13+x) * 110),531),0.7)
         for x in range(16, 19):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25) 
-            result = transparentOverlay(cv2_im_processed,charResize,(1182 + ((-16+x) * 150),431),0.7)
+            charResize = cv2.resize(charImg, (0,0), fx=imgScale, fy=imgScale) 
+            result = transparentOverlay(cv2_im_processed,charResize,(482 + ((-16+x) * 100),531),0.7)
         for x in range(19, 22):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25) 
-            result = transparentOverlay(cv2_im_processed,charResize,(632 + ((-19+x) * 150),660),0.7)
+            charResize = cv2.resize(charImg, (0,0), fx=imgScale, fy=imgScale) 
+            result = transparentOverlay(cv2_im_processed,charResize,(882 + ((-19+x) * 110),531),0.7)
     if playerNumber == 8:
+        imgScale = .22
         for x in range(1, 4):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry)
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25)    
-            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-1+x) *100),180),0.7)
+            charResize = cv2.resize(charImg, (0,0), fx=imgScale, fy=imgScale)    
+            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-1+x) *110),200),0.7)
         for x in range(4, 7):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry)                
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25) 
-            result = transparentOverlay(cv2_im_processed,charResize,(482 + ((-4+x) * 100),180),0.7)
+            charResize = cv2.resize(charImg, (0,0), fx=imgScale, fy=imgScale) 
+            result = transparentOverlay(cv2_im_processed,charResize,(482 + ((-4+x) * 110),200),0.7)
         for x in range(7, 10):
             characterEntry = app.getOptionBox("Character %d" % x)
-            getCharacterFromEntry(characterEntry) 
+            charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25) 
-            result = transparentOverlay(cv2_im_processed,charResize,(882 + ((-7+x) * 100),180),0.7)
+            charResize = cv2.resize(charImg, (0,0), fx=imgScale, fy=imgScale) 
+            result = transparentOverlay(cv2_im_processed,charResize,(882 + ((-7+x) * 110),200),0.7)
         for x in range(10, 13):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25) 
-            result = transparentOverlay(cv2_im_processed,charResize,(1282 + ((-10+x) * 100),180),0.7)
+            charResize = cv2.resize(charImg, (0,0), fx=imgScale, fy=imgScale) 
+            result = transparentOverlay(cv2_im_processed,charResize,(1282 + ((-10+x) * 110),200),0.7)
         for x in range(13, 16):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25) 
-            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-13+x) * 100),511),0.7)
+            charResize = cv2.resize(charImg, (0,0), fx=imgScale, fy=imgScale) 
+            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-13+x) * 110),531),0.7)
         for x in range(16, 19):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25) 
-            result = transparentOverlay(cv2_im_processed,charResize,(482 + ((-16+x) * 100),511),0.7)
+            charResize = cv2.resize(charImg, (0,0), fx=imgScale, fy=imgScale) 
+            result = transparentOverlay(cv2_im_processed,charResize,(482 + ((-16+x) * 100),531),0.7)
         for x in range(19, 22):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25) 
-            result = transparentOverlay(cv2_im_processed,charResize,(882 + ((-19+x) * 100),510),0.7)
+            charResize = cv2.resize(charImg, (0,0), fx=imgScale, fy=imgScale) 
+            result = transparentOverlay(cv2_im_processed,charResize,(882 + ((-19+x) * 110),531),0.7)
         for x in range(22, 25):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
-            charResize = cv2.resize(charImg, (0,0), fx=0.25, fy=0.25) 
-            result = transparentOverlay(cv2_im_processed,charResize,(1282 + ((-22+x) * 100),510),0.7)
+            charResize = cv2.resize(charImg, (0,0), fx=imgScale, fy=imgScale) 
+            result = transparentOverlay(cv2_im_processed,charResize,(1282 + ((-22+x) * 110),531),0.7)
     if playerNumber == 9:
         imageScale = .21
         for x in range(1, 4):
@@ -428,55 +422,55 @@ def createImage():
             charImgString = getCharacterFromEntry(characterEntry)
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
             charResize = cv2.resize(charImg, (0,0), fx=imageScale, fy=imageScale)    
-            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-1+x) *90),180),0.7)
+            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-1+x) *90),200),0.7)
         for x in range(4, 7):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry)                
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
             charResize = cv2.resize(charImg, (0,0), fx=imageScale, fy=imageScale) 
-            result = transparentOverlay(cv2_im_processed,charResize,(382 + ((-4+x) * 90),180),0.7)
+            result = transparentOverlay(cv2_im_processed,charResize,(382 + ((-4+x) * 90),200),0.7)
         for x in range(7, 10):
             characterEntry = app.getOptionBox("Character %d" % x)
-            getCharacterFromEntry(characterEntry) 
+            charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
             charResize = cv2.resize(charImg, (0,0), fx=imageScale, fy=imageScale) 
-            result = transparentOverlay(cv2_im_processed,charResize,(682 + ((-7+x) * 90),180),0.7)
+            result = transparentOverlay(cv2_im_processed,charResize,(682 + ((-7+x) * 90),200),0.7)
         for x in range(10, 13):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
             charResize = cv2.resize(charImg, (0,0), fx=imageScale, fy=imageScale) 
-            result = transparentOverlay(cv2_im_processed,charResize,(982 + ((-10+x) * 90),180),0.7)
+            result = transparentOverlay(cv2_im_processed,charResize,(982 + ((-10+x) * 90),200),0.7)
         for x in range(13, 16):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
             charResize = cv2.resize(charImg, (0,0), fx=imageScale, fy=imageScale) 
-            result = transparentOverlay(cv2_im_processed,charResize,(1282 + ((-13+x) * 90),180),0.7)
+            result = transparentOverlay(cv2_im_processed,charResize,(1282 + ((-13+x) * 90),200),0.7)
         for x in range(16, 19):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
             charResize = cv2.resize(charImg, (0,0), fx=imageScale, fy=imageScale) 
-            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-16+x) * 90),511),0.7)
+            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-16+x) * 90),531),0.7)
         for x in range(19, 22):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
             charResize = cv2.resize(charImg, (0,0), fx=0.2, fy=0.2) 
-            result = transparentOverlay(cv2_im_processed,charResize,(382 + ((-19+x) * 90),510),0.7)
+            result = transparentOverlay(cv2_im_processed,charResize,(382 + ((-19+x) * 90),531),0.7)
         for x in range(22, 25):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
             charResize = cv2.resize(charImg, (0,0), fx=imageScale, fy=imageScale) 
-            result = transparentOverlay(cv2_im_processed,charResize,(682 + ((-22+x) * 90),510),0.7)
+            result = transparentOverlay(cv2_im_processed,charResize,(682 + ((-22+x) * 90),531),0.7)
         for x in range(25, 28):
             characterEntry = app.getOptionBox("Character %d" % x) 
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED) 
             charResize = cv2.resize(charImg, (0,0), fx=imageScale, fy=imageScale) 
-            result = transparentOverlay(cv2_im_processed,charResize,(982 + ((-25+x) * 90),510),0.7)
+            result = transparentOverlay(cv2_im_processed,charResize,(982 + ((-25+x) * 90),531),0.7)
     if playerNumber == 10:
         imageScale = .21
         for x in range(1, 4):
@@ -484,61 +478,61 @@ def createImage():
             charImgString = getCharacterFromEntry(characterEntry)
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
             charResize = cv2.resize(charImg, (0,0), fx=imageScale, fy=imageScale)    
-            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-1+x) *90),180),0.7)
+            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-1+x) *90),200),0.7)
         for x in range(4, 7):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry)                
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
             charResize = cv2.resize(charImg, (0,0), fx=imageScale, fy=imageScale) 
-            result = transparentOverlay(cv2_im_processed,charResize,(382 + ((-4+x) * 90),180),0.7)
+            result = transparentOverlay(cv2_im_processed,charResize,(382 + ((-4+x) * 90),200),0.7)
         for x in range(7, 10):
             characterEntry = app.getOptionBox("Character %d" % x)
-            getCharacterFromEntry(characterEntry) 
+            charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
             charResize = cv2.resize(charImg, (0,0), fx=imageScale, fy=imageScale) 
-            result = transparentOverlay(cv2_im_processed,charResize,(682 + ((-7+x) * 90),180),0.7)
+            result = transparentOverlay(cv2_im_processed,charResize,(682 + ((-7+x) * 90),200),0.7)
         for x in range(10, 13):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
             charResize = cv2.resize(charImg, (0,0), fx=0.2, fy=0.2) 
-            result = transparentOverlay(cv2_im_processed,charResize,(982 + ((-10+x) * 90),180),0.7)
+            result = transparentOverlay(cv2_im_processed,charResize,(982 + ((-10+x) * 90),200),0.7)
         for x in range(13, 16):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
             charResize = cv2.resize(charImg, (0,0), fx=0.2, fy=0.2) 
-            result = transparentOverlay(cv2_im_processed,charResize,(1282 + ((-13+x) * 90),180),0.7)
+            result = transparentOverlay(cv2_im_processed,charResize,(1282 + ((-13+x) * 90),200),0.7)
         for x in range(16, 19):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
             charResize = cv2.resize(charImg, (0,0), fx=0.2, fy=0.2) 
-            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-16+x) * 90),511),0.7)
+            result = transparentOverlay(cv2_im_processed,charResize,(82 + ((-16+x) * 90),530),0.7)
         for x in range(19, 22):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
             charResize = cv2.resize(charImg, (0,0), fx=0.2, fy=0.2) 
-            result = transparentOverlay(cv2_im_processed,charResize,(382 + ((-19+x) * 90),510),0.7)
+            result = transparentOverlay(cv2_im_processed,charResize,(382 + ((-19+x) * 90),530),0.7)
         for x in range(22, 25):
             characterEntry = app.getOptionBox("Character %d" % x)
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED)
             charResize = cv2.resize(charImg, (0,0), fx=0.2, fy=0.2) 
-            result = transparentOverlay(cv2_im_processed,charResize,(682 + ((-22+x) * 90),510),0.7)
+            result = transparentOverlay(cv2_im_processed,charResize,(682 + ((-22+x) * 90),530),0.7)
         for x in range(25, 28):
             characterEntry = app.getOptionBox("Character %d" % x) 
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED) 
             charResize = cv2.resize(charImg, (0,0), fx=0.2, fy=0.2) 
-            result = transparentOverlay(cv2_im_processed,charResize,(982 + ((-25+x) * 90),510),0.7)
+            result = transparentOverlay(cv2_im_processed,charResize,(982 + ((-25+x) * 90),530),0.7)
         for x in range(28, 31):
             characterEntry = app.getOptionBox("Character %d" % x) 
             charImgString = getCharacterFromEntry(characterEntry) 
             charImg = cv2.imread(charImgString, cv2.IMREAD_UNCHANGED) 
             charResize = cv2.resize(charImg, (0,0), fx=0.2, fy=0.2) 
-            result = transparentOverlay(cv2_im_processed,charResize,(1282 + ((-28+x) * 90),510),0.7)
+            result = transparentOverlay(cv2_im_processed,charResize,(1282 + ((-28+x) * 90),530),0.7)
     cv2.imshow("image", result)  
     cv2.imwrite('/Users/Stephen/Documents/Visual Studio Code Workspace/leaderboard.png', result) 
 #checks left, right entry boxes to ensure user hasn't input too many characters
